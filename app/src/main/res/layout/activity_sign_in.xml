@@ -109,8 +109,8 @@
         android:id="@+id/text_view_register"
         tools:text="Don't have an account?Register" />
 
-<!--    <include-->
-<!--        android:visibility="gone"-->
-<!--        layout="@layout/layout_loading"-->
-<!--        android:id="@+id/layout_loading"/>-->
+    <include
+        android:visibility="gone"
+        layout="@layout/layout_loading"
+        android:id="@+id/layout_loading"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
