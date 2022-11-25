@@ -14,7 +14,7 @@ import retrofit2.Call;
 public class AuthenticationRepository {
     private ApiService apiService;
 
-    public AuthenticationRepository(Context context) {
+        public AuthenticationRepository(Context context) {
         apiService = RetrofitClient.getInstance(context).getApiService();
     }
 

@@ -1,14 +1,17 @@
-package com.example.appsale.data.remote.dto;
+package com.example.appsale.data.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-public class UserDTO {
-
+public class User {
     private String email;
     private String name;
     private String phone;
     private String token;
+
+    public User(String email, String name, String phone, String token) {
+        this.email = email;
+        this.name = name;
+        this.phone = phone;
+        this.token = token;
+    }
 
     public String getEmail() {
         return email;
@@ -44,7 +47,7 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO{" +
+        return "User{" +
                 "email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
