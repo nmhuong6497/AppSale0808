@@ -12,4 +12,7 @@ import retrofit2.http.POST;
 public interface ApiService {
     @POST("/user/sign-in")
     Call<AppResource<UserDTO>> signIn(@Body HashMap<String, Object> body);
+
+    @POST("/user/sign-up")
+    Call<AppResource<UserDTO>> register(@Body HashMap<String, Object> body);
 }

@@ -1,9 +1,14 @@
 package com.example.appsale.presentation.view.activity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,12 +21,14 @@ import com.example.appsale.R;
 import com.example.appsale.data.model.AppResource;
 import com.example.appsale.data.model.User;
 import com.example.appsale.presentation.viewmodel.SignInViewModel;
+import com.example.appsale.utils.SpannedUtil;
 
 public class SignInActivity extends AppCompatActivity {
 
     SignInViewModel signInViewModel;
     EditText edtEmail, edtPassword;
     LinearLayout linearSignIn, loadingView;
+    TextView tvRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class SignInActivity extends AppCompatActivity {
         linearSignIn = findViewById(R.id.sign_in);
         edtEmail = findViewById(R.id.textEditEmail);
         edtPassword = findViewById(R.id.textEditPassword);
+        tvRegister = findViewById(R.id.text_view_register);
     }
 
     private void observer() {
@@ -61,6 +69,7 @@ public class SignInActivity extends AppCompatActivity {
                         loadingView.setVisibility(View.VISIBLE);
                         break;
                     case SUCCESS:
+                        Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         loadingView.setVisibility(View.GONE);
                         break;
                 }
@@ -77,11 +86,23 @@ public class SignInActivity extends AppCompatActivity {
                 String password = edtPassword.getText().toString();
 
                 if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(SignInActivity.this, "Bạn chưa nhập đủ thông tin!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Bạn chưa nhập đủ thông tin!!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 signInViewModel.signIn(email, password);
             }
         });
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+        spannableStringBuilder.append("Don't have an account?");
+        spannableStringBuilder.append(SpannedUtil.setClickColorLink("Register", this, new SpannedUtil.OnListenClick() {
+            @Override
+            public void onClick() {
+                startActivity(new Intent(SignInActivity.this, RegisterActivity.class));
+            }
+        }));
+        tvRegister.setText(spannableStringBuilder);
+        tvRegister.setHighlightColor(Color.TRANSPARENT);
+        tvRegister.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }

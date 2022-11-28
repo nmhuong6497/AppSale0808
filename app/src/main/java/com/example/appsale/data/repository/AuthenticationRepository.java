@@ -25,4 +25,15 @@ public class AuthenticationRepository {
 
         return apiService.signIn(body);
     }
+
+    public Call<AppResource<UserDTO>> register(String email, String password, String name, String phone, String address) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("email", email);
+        body.put("password", password);
+        body.put("name", name);
+        body.put("phone", phone);
+        body.put("address", address);
+
+        return apiService.register(body);
+    }
 }
