@@ -12,6 +12,11 @@ import com.example.appsale.data.model.User;
 import com.example.appsale.data.remote.dto.UserDTO;
 import com.example.appsale.data.repository.AuthenticationRepository;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +45,15 @@ public class SignInViewModel extends ViewModel {
                     User user = new User(userDTO.getEmail(), userDTO.getName(), userDTO.getPhone(), userDTO.getToken());
                     userResource.setValue(new AppResource.Success<>(user));
                 } else {
-                    Log.d("BBB", response.errorBody().toString());
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String message = jsonObject.getString("message");
+                        userResource.setValue(new AppResource.Error<>(message));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
