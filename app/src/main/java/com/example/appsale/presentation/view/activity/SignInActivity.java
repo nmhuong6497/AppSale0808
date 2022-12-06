@@ -69,8 +69,10 @@ public class SignInActivity extends AppCompatActivity {
                         loadingView.setVisibility(View.VISIBLE);
                         break;
                     case SUCCESS:
-                        Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         loadingView.setVisibility(View.GONE);
+                        startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+                        finish();
+                        Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -86,7 +88,7 @@ public class SignInActivity extends AppCompatActivity {
                 String password = edtPassword.getText().toString();
 
                 if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(SignInActivity.this, "Bạn chưa nhập đủ thông tin!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Bạn chưa nhập đủ thông tin !!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 signInViewModel.signIn(email, password);
