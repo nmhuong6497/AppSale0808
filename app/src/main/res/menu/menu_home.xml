@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_history_order"
+        app:showAsAction="always"
+        android:title="History Order"
+        android:id="@+id/item_menu_history_order"/>
+
+    <item
+        app:actionLayout="@layout/layout_item_menu"
+        android:icon="@drawable/ic_store"
+        app:showAsAction="always"
+        android:title="Cart"
+        android:id="@+id/item_menu_cart"/>
+</menu>
