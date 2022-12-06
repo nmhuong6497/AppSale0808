@@ -17,6 +17,7 @@ import com.example.appsale.data.model.AppResource;
 import com.example.appsale.data.model.Product;
 import com.example.appsale.data.model.User;
 import com.example.appsale.databinding.ActivityHomeBinding;
+import com.example.appsale.presentation.view.adapter.ProductAdapter;
 import com.example.appsale.presentation.viewmodel.HomeViewModel;
 
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
 
     ActivityHomeBinding homeBinding;
+    ProductAdapter productAdapter;
     HomeViewModel homeViewModel;
 
     @Override
@@ -46,6 +48,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        productAdapter = new ProductAdapter();
+        homeBinding.recyclerViewProduct.setAdapter(productAdapter);
+        homeBinding.recyclerViewProduct.setHasFixedSize(true);
+
+        // Toolbar
+        setSupportActionBar(homeBinding.toolbarHome);
         homeViewModel.fetchProducts();
     }
 
@@ -55,17 +63,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onChanged(AppResource<List<Product>> listAppResource) {
                 switch (listAppResource.status) {
                     case ERROR:
-//                        loadingView.setVisibility(View.GONE);
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
                         Toast.makeText(HomeActivity.this, listAppResource.message, Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
-//                        loadingView.setVisibility(View.VISIBLE);
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.VISIBLE);
                         break;
                     case SUCCESS:
-//                        loadingView.setVisibility(View.GONE);
-                        for (int i = 0; i < listAppResource.data.size(); i++) {
-                            Log.d("BBB", listAppResource.data.get(i).toString());
-                        }
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        productAdapter.updateListProduct(listAppResource.data);
                         break;
                 }
             }
