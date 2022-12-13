@@ -17,8 +17,10 @@ import android.widget.Toast;
 
 import com.example.appsale.R;
 import com.example.appsale.data.model.AppResource;
+import com.example.appsale.data.model.Cart;
 import com.example.appsale.data.model.Product;
 import com.example.appsale.data.model.User;
+import com.example.appsale.data.remote.dto.CartDTO;
 import com.example.appsale.databinding.ActivityHomeBinding;
 import com.example.appsale.presentation.view.adapter.ProductAdapter;
 import com.example.appsale.presentation.viewmodel.HomeViewModel;
@@ -101,6 +103,29 @@ public class HomeActivity extends AppCompatActivity {
                     case SUCCESS:
                         homeBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
                         productAdapter.updateListProduct(listAppResource.data);
+                        break;
+                }
+            }
+        });
+
+        homeViewModel.getCart().observe(this, new Observer<AppResource<Cart>>() {
+            @Override
+            public void onChanged(AppResource<Cart> cartAppResource) {
+                switch (cartAppResource.status) {
+                    case ERROR:
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        Toast.makeText(HomeActivity.this, cartAppResource.message, Toast.LENGTH_SHORT).show();
+                        break;
+                    case LOADING:
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.VISIBLE);
+                        break;
+                    case SUCCESS:
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        int countBadge = 0;
+                        for (int i = 0; i < cartAppResource.data.getProducts().size(); i++) {
+                            countBadge += cartAppResource.data.getProducts().get(i).getQuantity();
+                        }
+                        setupBadge(countBadge);
                         break;
                 }
             }
