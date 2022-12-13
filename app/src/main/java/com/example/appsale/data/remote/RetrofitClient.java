@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.example.appsale.common.AppConstant;
+import com.example.appsale.data.local.AppCache;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -44,7 +46,20 @@ public class RetrofitClient {
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(logRequest)
-                .build();
+                .addInterceptor(new Interceptor() {
+                    @NonNull
+                    @Override
+                    public Response intercept(@NonNull Chain chain) throws IOException {
+                        String token = AppCache.getInstance(context).getDataString(AppConstant.KEY_TOKEN);
+                        if (!token.isEmpty()) {
+                            Request newRequest = chain.request().newBuilder()
+                                    .addHeader("Authorization", "Bearer " + token)
+                                    .build();
+                            return chain.proceed(newRequest);
+                        }
+                        return chain.proceed(chain.request());
+                    }
+                }).build();
 
         Gson gson = new GsonBuilder().create();
 

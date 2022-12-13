@@ -6,7 +6,6 @@ import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.appsale.R;
 import com.example.appsale.common.AppConstant;
 import com.example.appsale.data.local.AppCache;
 import com.example.appsale.databinding.ActivitySplashBinding;
@@ -30,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animator) {
                 AppCache appCache = AppCache.getInstance(SplashActivity.this);
-                String token = appCache.getDataString(AppConstant.KEY_VALUE);
+                String token = appCache.getDataString(AppConstant.KEY_TOKEN);
                 Intent intent;
                 if (token == null) {
                     intent = new Intent(SplashActivity.this, SignInActivity.class);

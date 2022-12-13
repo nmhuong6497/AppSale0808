@@ -1,7 +1,6 @@
 package com.example.appsale.presentation.viewmodel;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -48,7 +47,7 @@ public class SignInViewModel extends ViewModel {
                     UserDTO userDTO = userDTOAppResource.data;
                     User user = new User(userDTO.getEmail(), userDTO.getName(), userDTO.getPhone(), userDTO.getToken());
                     userResource.setValue(new AppResource.Success<>(user));
-                    appCache.saveDataString(AppConstant.KEY_VALUE, user.getToken());
+                    appCache.saveDataString(AppConstant.KEY_TOKEN, user.getToken());
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
