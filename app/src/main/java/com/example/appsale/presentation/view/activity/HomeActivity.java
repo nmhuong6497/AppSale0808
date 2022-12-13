@@ -130,6 +130,13 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+
+        productAdapter.setOnItemClickFood(new ProductAdapter.OnItemClickProduct() {
+            @Override
+            public void onClick(int position) {
+                homeViewModel.addCart(productAdapter.getListProducts().get(position).getId());
+            }
+        });
     }
 
     private void observerData() {

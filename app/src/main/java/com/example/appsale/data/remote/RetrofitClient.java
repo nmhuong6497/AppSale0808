@@ -51,7 +51,7 @@ public class RetrofitClient {
                     @Override
                     public Response intercept(@NonNull Chain chain) throws IOException {
                         String token = AppCache.getInstance(context).getDataString(AppConstant.KEY_TOKEN);
-                        if (!token.isEmpty()) {
+                        if (token != null && !token.isEmpty()) {
                             Request newRequest = chain.request().newBuilder()
                                     .addHeader("Authorization", "Bearer " + token)
                                     .build();

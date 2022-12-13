@@ -25,4 +25,7 @@ public interface ApiService {
 
     @GET("/cart")
     Call<AppResource<CartDTO>> getCart();
+
+    @POST("/cart/add")
+    Call<AppResource<CartDTO>> addCart(@Body HashMap<String, Object> body);
 }
