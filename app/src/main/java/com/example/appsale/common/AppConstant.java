@@ -6,5 +6,5 @@ public class AppConstant {
     public static final String KEY_VALUE = "token";
 
     // Base url
-    public static final String BASE_URL = "https://serverappsale.herokuapp.com";
+    public static final String BASE_URL = "https://serverappsale.onrender.com/";
 }

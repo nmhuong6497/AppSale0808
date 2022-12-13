@@ -30,6 +30,7 @@ public class SignInViewModel extends ViewModel {
 
     public SignInViewModel(Context context) {
         repository = new AuthenticationRepository(context);
+        appCache = AppCache.getInstance(context);
     }
 
     public LiveData<AppResource<User>> getUserResource() {
