@@ -63,7 +63,6 @@ public class HomeViewModel extends ViewModel {
                                 productDTO.getQuantity(),
                                 productDTO.getGallery()
                         ));
-                        
                     }
                     listProducts.setValue(new AppResource.Success<>(listProduct));
                 } else {

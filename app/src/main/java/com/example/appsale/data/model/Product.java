@@ -11,8 +11,8 @@ public class Product {
     private int quantity;
     private List<String> gallery;
 
-    public Product() {
-
+    public Product(String id) {
+        this.id = id;
     }
 
     public Product(String id, String name, String address, int price, String img, int quantity, List<String> gallery) {

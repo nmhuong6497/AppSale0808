@@ -61,6 +61,7 @@ public class HomeActivity extends AppCompatActivity {
         // Toolbar
         setSupportActionBar(homeBinding.toolbarHome);
         homeViewModel.fetchProducts();
+        homeViewModel.fetchCart();
     }
 
     @Override
@@ -85,6 +86,14 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item_menu_cart:
+                startActivity(new Intent(HomeActivity.this, CartActivity.class));
+                break;
+            case R.id.item_menu_history_order:
+                startActivity(new Intent(HomeActivity.this, OrderHistoryActivity.class));
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -29,7 +29,6 @@ public class SignInActivity extends AppCompatActivity {
     EditText edtEmail, edtPassword;
     LinearLayout linearSignIn, loadingView;
     TextView tvRegister;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +79,6 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void event() {
-
         linearSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +86,7 @@ public class SignInActivity extends AppCompatActivity {
                 String password = edtPassword.getText().toString();
 
                 if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(SignInActivity.this, "Bạn chưa nhập đủ thông tin !!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Bạn chưa nhập đủ thông tin!!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 signInViewModel.signIn(email, password);

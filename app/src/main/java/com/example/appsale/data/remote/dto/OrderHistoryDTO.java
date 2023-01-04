@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class CartDTO {
+public class OrderHistoryDTO {
     @SerializedName("_id")
     @Expose
     private String id;
@@ -15,6 +15,13 @@ public class CartDTO {
     @Expose
     private String idUser;
     private Integer price;
+    private Boolean status;
+    @SerializedName("date_created")
+    @Expose
+    private String dateCreated;
+    @SerializedName("__v")
+    @Expose
+    private Integer v;
 
     public String getId() {
         return id;
@@ -48,13 +55,40 @@ public class CartDTO {
         this.price = price;
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Integer getV() {
+        return v;
+    }
+
+    public void setV(Integer v) {
+        this.v = v;
+    }
+
     @Override
     public String toString() {
-        return "CartDTO{" +
+        return "OrderHistoryDTO{" +
                 "id='" + id + '\'' +
                 ", products=" + products +
                 ", idUser='" + idUser + '\'' +
                 ", price=" + price +
+                ", status=" + status +
+                ", dateCreated='" + dateCreated + '\'' +
+                ", v=" + v +
                 '}';
     }
 }

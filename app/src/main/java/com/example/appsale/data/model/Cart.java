@@ -1,10 +1,12 @@
 package com.example.appsale.data.model;
 
+import com.example.appsale.data.remote.dto.ProductDTO;
+
 import java.util.List;
 
 public class Cart {
     private String id;
-    private List<Product> products = null;
+    private List<Product> products;
     private String idUser;
     private Integer price;
 
