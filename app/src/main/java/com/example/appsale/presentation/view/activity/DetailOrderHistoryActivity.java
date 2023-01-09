@@ -23,6 +23,8 @@ import com.example.appsale.presentation.view.adapter.OrderHistoryAdapter;
 import com.example.appsale.presentation.viewmodel.OrderHistoryViewModel;
 import com.example.appsale.utils.StringUtil;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class DetailOrderHistoryActivity extends AppCompatActivity {
@@ -66,6 +68,7 @@ public class DetailOrderHistoryActivity extends AppCompatActivity {
                         break;
                     case SUCCESS:
                         detailOrderHistoryBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        Collections.reverse(orderHistoryAppResource.data);
                         detailOrderHistoryAdapter.updateListProduct(orderHistoryAppResource.data.get(position).getProducts());
                         detailOrderHistoryBinding.textViewTotalPriceCart.setText(String.format("%s VND", StringUtil.formatCurrency(orderHistoryAppResource.data.get(position).getPrice())));
                         detailOrderHistoryBinding.layoutTotalPriceCart.setVisibility(View.VISIBLE);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,6 +60,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
         LayoutItemProductBinding binding;
+        Product product;
 
         public ProductViewHolder(@NonNull LayoutItemProductBinding view) {
             super(view.getRoot());
@@ -68,13 +70,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 @Override
                 public void onClick(View view) {
                     if (onItemClickProduct != null) {
-                        onItemClickProduct.onClick(getAdapterPosition());
+                        onItemClickProduct.onClick(getAdapterPosition(), "add", product);
+                    }
+                }
+            });
+
+            binding.buttonDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (onItemClickProduct != null) {
+                        onItemClickProduct.onClick(getAdapterPosition(), "detail", product);
                     }
                 }
             });
         }
 
         public void bind(Context context, Product product) {
+            this.product = product;
             binding.textViewName.setText(product.getName());
             binding.textViewAddress.setText(product.getAddress());
             binding.textViewPrice.setText(String.format("%s VND", StringUtil.formatCurrency(product.getPrice())));
@@ -90,6 +102,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public interface OnItemClickProduct {
-        void onClick(int position);
+        void onClick(int position, String nameButton, Product product);
     }
 }

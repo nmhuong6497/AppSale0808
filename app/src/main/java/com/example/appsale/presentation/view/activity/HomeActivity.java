@@ -1,29 +1,42 @@
 package com.example.appsale.presentation.view.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.appsale.R;
+import com.example.appsale.common.AppConstant;
+import com.example.appsale.data.local.AppCache;
 import com.example.appsale.data.model.AppResource;
 import com.example.appsale.data.model.Cart;
 import com.example.appsale.data.model.Product;
 import com.example.appsale.data.model.User;
 import com.example.appsale.data.remote.dto.CartDTO;
 import com.example.appsale.databinding.ActivityHomeBinding;
+import com.example.appsale.databinding.LayoutDialogHomeBinding;
 import com.example.appsale.presentation.view.adapter.ProductAdapter;
 import com.example.appsale.presentation.viewmodel.HomeViewModel;
+import com.example.appsale.utils.StringUtil;
 
 import java.util.List;
 
@@ -93,8 +106,38 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.item_menu_history_order:
                 startActivity(new Intent(HomeActivity.this, OrderHistoryActivity.class));
                 break;
+            case R.id.item_log_out:
+                dialogLogOut();
+                break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void dialogLogOut() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        builder.setTitle("LOG OUT!!!");
+        builder.setMessage("Thoát tài khoản và quay về màn hình đăng nhập?");
+        builder.setIcon(R.drawable.icon_log_out);
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                AppCache appCache = AppCache.getInstance(HomeActivity.this);
+                appCache.clearCache();
+                startActivity(new Intent(HomeActivity.this, SignInActivity.class));
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.show();
     }
 
     private void event() {
@@ -141,9 +184,67 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         productAdapter.setOnItemClickFood(new ProductAdapter.OnItemClickProduct() {
+            int indexGallery = 0;
             @Override
-            public void onClick(int position) {
-                homeViewModel.addCart(productAdapter.getListProducts().get(position).getId());
+            public void onClick(int position, String nameButton, Product product) {
+                switch (nameButton) {
+                    case "add":
+                        homeViewModel.addCart(productAdapter.getListProducts().get(position).getId());
+                        break;
+                    case "detail":
+                        Dialog dialog = new Dialog(HomeActivity.this);
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        LayoutDialogHomeBinding binding = LayoutDialogHomeBinding.inflate(LayoutInflater.from(HomeActivity.this));
+                        dialog.setContentView(binding.getRoot());
+
+                        Window window = dialog.getWindow();
+
+                        if (window != null) {
+                            window.setGravity(Gravity.CENTER);
+                            window.setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+                        }
+                        binding.textViewNameDialog.setText(product.getName());
+                        binding.textViewAddressDialog.setText(product.getAddress());
+                        binding.textViewPriceDialog.setText(String.format("%s VND", StringUtil.formatCurrency(product.getPrice())));
+
+                        Glide.with(HomeActivity.this)
+                                .load(AppConstant.BASE_URL + product.getGallery().get(0))
+                                .placeholder(R.drawable.ic_logo)
+                                .into(binding.imageViewDialog);
+
+                        binding.buttonFrontDialog.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                indexGallery = indexGallery == product.getGallery().size() - 1 ? -1 : indexGallery;
+                                Glide.with(HomeActivity.this)
+                                        .load(AppConstant.BASE_URL + product.getGallery().get(++indexGallery))
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(binding.imageViewDialog);
+                            }
+                        });
+
+                        binding.buttonBackDialog.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                indexGallery = indexGallery == 0 ? product.getGallery().size() : indexGallery;
+                                Glide.with(HomeActivity.this)
+                                        .load(AppConstant.BASE_URL + product.getGallery().get(--indexGallery))
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(binding.imageViewDialog);
+                            }
+                        });
+
+                        binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                homeViewModel.addCart(productAdapter.getListProducts().get(position).getId());
+                                dialog.dismiss();
+                                indexGallery = 0;
+                            }
+                        });
+                        dialog.show();
+                        break;
+                }
             }
         });
     }

@@ -27,7 +27,7 @@ public class SignInActivity extends AppCompatActivity {
 
     SignInViewModel signInViewModel;
     EditText edtEmail, edtPassword;
-    LinearLayout linearSignIn, loadingView;
+    LinearLayout linearSignIn, loadingView, linearDefaultUser;
     TextView tvRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class SignInActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.textEditEmail);
         edtPassword = findViewById(R.id.textEditPassword);
         tvRegister = findViewById(R.id.text_view_register);
+        linearDefaultUser = findViewById(R.id.layout_default_user);
     }
 
     private void observer() {
@@ -79,6 +80,14 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void event() {
+        linearDefaultUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtEmail.setText("nm.huong6497@gmail.com");
+                edtPassword.setText("123456789");
+            }
+        });
+
         linearSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

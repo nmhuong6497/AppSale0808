@@ -18,6 +18,7 @@ import com.example.appsale.presentation.view.adapter.OrderHistoryAdapter;
 import com.example.appsale.presentation.viewmodel.OrderHistoryViewModel;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 public class OrderHistoryActivity extends AppCompatActivity {
@@ -58,6 +59,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
                         break;
                     case SUCCESS:
                         orderHistoryBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        Collections.reverse(orderHistoryAppResource.data);
                         orderHistoryAdapter.updateListOrderHistory(orderHistoryAppResource.data);
                         break;
                 }

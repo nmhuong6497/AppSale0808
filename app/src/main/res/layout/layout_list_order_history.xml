@@ -38,7 +38,7 @@
             android:layout_marginTop="4dp"
             android:paddingVertical="3dp"
             android:paddingHorizontal="15dp"
-            android:background="@drawable/background_button_border"
+            android:background="@drawable/background_button_corner_primary"
             app:layout_constraintTop_toBottomOf="@+id/text_view_total_order_list"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

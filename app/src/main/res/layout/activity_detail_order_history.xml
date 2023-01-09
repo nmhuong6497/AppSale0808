@@ -46,7 +46,7 @@
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textAllCaps="true"
                 android:text="Tổng đơn hàng"/>
 

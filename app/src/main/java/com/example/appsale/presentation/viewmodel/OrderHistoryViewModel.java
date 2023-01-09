@@ -50,33 +50,6 @@ public class OrderHistoryViewModel extends ViewModel {
     }
 
     public void fetchOrderHistory() {
-//        orderHistory.setValue(new AppResource.Loading<>(null));
-//        Call<AppResource<OrderHistoryDTO>> callOrderHistory = orderHistoryRepository.getOrderHistoryDTO();
-//        callOrderHistory.enqueue(new Callback<AppResource<OrderHistoryDTO>>() {
-//            @Override
-//            public void onResponse(Call<AppResource<OrderHistoryDTO>> call, Response<AppResource<OrderHistoryDTO>> response) {
-//                OrderHistoryDTO orderHistoryDTO = response.body().data;
-//                List<Product> productList = new ArrayList<>();
-//                for (ProductDTO productDTO: orderHistoryDTO.getProducts()) {
-//                    productList.add(new Product(
-//                            productDTO.getId(),
-//                            productDTO.getName(),
-//                            productDTO.getAddress(),
-//                            productDTO.getPrice(),
-//                            productDTO.getImg(),
-//                            productDTO.getQuantity(),
-//                            productDTO.getGallery()
-//                    ));
-//                }
-//                orderHistory.setValue(new AppResource.Success<>(new OrderHistory(orderHistoryDTO.getId(),productList, orderHistoryDTO.getIdUser(), orderHistoryDTO.getPrice(), orderHistoryDTO.getStatus(), orderHistoryDTO.getDateCreated(), orderHistoryDTO.getV())));
-//            }
-//
-//            @Override
-//            public void onFailure(Call<AppResource<OrderHistoryDTO>> call, Throwable t) {
-//                orderHistory.setValue(new AppResource.Error<>(t.getMessage()));
-//            }
-//        });
-
         listOrderHistory.setValue(new AppResource.Loading(null));
         Call<AppResource<List<OrderHistoryDTO>>> callListOrderHistory = orderHistoryRepository.getListOrderHistoryDTO();
         callListOrderHistory.enqueue(new Callback<AppResource<List<OrderHistoryDTO>>>() {

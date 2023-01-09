@@ -166,4 +166,86 @@ public class HomeViewModel extends ViewModel {
             }
         });
     }
+
+    public void cartConform(String idCart) {
+        cart.setValue(new AppResource.Loading(null));
+        Call<AppResource<CartDTO>> callCart = cartRepository.cartConform(idCart);
+        callCart.enqueue(new Callback<AppResource<CartDTO>>() {
+            @Override
+            public void onResponse(Call<AppResource<CartDTO>> call, Response<AppResource<CartDTO>> response) {
+                if (response.isSuccessful()) {
+                    CartDTO cartDTO = response.body().data;
+                    List<Product> listProduct = new ArrayList<>();
+                    for (ProductDTO productDTO : cartDTO.getProducts()) {
+                        listProduct.add(new Product(
+                                productDTO.getId(),
+                                productDTO.getName(),
+                                productDTO.getAddress(),
+                                productDTO.getPrice(),
+                                productDTO.getImg(),
+                                productDTO.getQuantity(),
+                                productDTO.getGallery())
+                        );
+                    }
+                    cart.setValue(new AppResource.Success<>(new Cart(cartDTO.getId(), listProduct, cartDTO.getIdUser(), cartDTO.getPrice())));
+                } else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String message = jsonObject.getString("message");
+                        cart.setValue(new AppResource.Error<>(message));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AppResource<CartDTO>> call, Throwable t) {
+                cart.setValue(new AppResource.Error<>(t.getMessage()));
+            }
+        });
+    }
+
+    public void updateCart(String idProduct, String idCart, int quantity) {
+        cart.setValue(new AppResource.Loading(null));
+        Call<AppResource<CartDTO>> callCart = cartRepository.updateCart(idProduct, idCart,quantity);
+        callCart.enqueue(new Callback<AppResource<CartDTO>>() {
+            @Override
+            public void onResponse(Call<AppResource<CartDTO>> call, Response<AppResource<CartDTO>> response) {
+                if (response.isSuccessful()) {
+                    CartDTO cartDTO = response.body().data;
+                    List<Product> listProduct = new ArrayList<>();
+                    for (ProductDTO productDTO : cartDTO.getProducts()) {
+                        listProduct.add(new Product(
+                                productDTO.getId(),
+                                productDTO.getName(),
+                                productDTO.getAddress(),
+                                productDTO.getPrice(),
+                                productDTO.getImg(),
+                                productDTO.getQuantity(),
+                                productDTO.getGallery())
+                        );
+                    }
+                    cart.setValue(new AppResource.Success<>(new Cart(cartDTO.getId(), listProduct, cartDTO.getIdUser(), cartDTO.getPrice())));
+                } else {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                        String message = jsonObject.getString("message");
+                        cart.setValue(new AppResource.Error<>(message));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AppResource<CartDTO>> call, Throwable t) {
+                cart.setValue(new AppResource.Error<>(t.getMessage()));
+            }
+        });
+    }
 }

@@ -2,7 +2,9 @@ package com.example.appsale.presentation.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +24,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     Cart cart;
     List<Product> listProductsOfCart;
     Context context;
+    OnItemClickCart onItemClickCart;
 
     public CartAdapter() {
         listProductsOfCart = new ArrayList<>();
@@ -63,6 +66,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         public CartViewHolder(@NonNull LayoutItemCartBinding view) {
             super(view.getRoot());
             binding = view;
+
+            binding.imageViewUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (onItemClickCart != null) {
+                        onItemClickCart.onClick(getAdapterPosition(), true);
+                    }
+                }
+            });
+
+            binding.imageViewDown.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (onItemClickCart != null) {
+                        onItemClickCart.onClick(getAdapterPosition(), false);
+                    }
+                }
+            });
         }
 
         public void bind(Context context, Product product) {
@@ -75,5 +96,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     .placeholder(R.drawable.ic_logo)
                     .into(binding.imageViewCart);
         }
+    }
+
+    public void setOnItemClickCart(CartAdapter.OnItemClickCart onItemClickCart) {
+        this.onItemClickCart = onItemClickCart;
+    }
+
+    public interface OnItemClickCart {
+        void onClick(int position, boolean isQuantityUp);
     }
 }
