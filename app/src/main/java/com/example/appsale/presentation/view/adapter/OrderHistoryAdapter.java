@@ -1,6 +1,7 @@
 package com.example.appsale.presentation.view.adapter;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,16 @@ import com.example.appsale.data.model.OrderHistory;
 import com.example.appsale.databinding.LayoutListOrderHistoryBinding;
 import com.example.appsale.utils.StringUtil;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.OrderHistoryViewHolder> {
 
@@ -73,8 +82,16 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         }
 
         public void bind(Context context, OrderHistory orderHistory) {
-           binding.textViewDate.setText(orderHistory.getDateCreated());
-           binding.textViewTotalOrderList.setText("Tổng tiền: " + String.format("%s VND", StringUtil.formatCurrency(orderHistory.getPrice())));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            Date date = null;
+            try {
+                date = dateFormat.parse(orderHistory.getDateCreated());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            String dateToStr = DateFormat.getInstance().format(date);
+            binding.textViewDate.setText(dateToStr);
+            binding.textViewTotalOrderList.setText("Tổng tiền: " + String.format("%s VND", StringUtil.formatCurrency(orderHistory.getPrice())));
         }
     }
 
