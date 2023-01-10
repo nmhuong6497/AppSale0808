@@ -96,6 +96,7 @@ public class CartActivity extends AppCompatActivity {
             public void onClick(View view) {
                 homeViewModel.cartConform(homeViewModel.getCart().getValue().data.getId());
                 cartBinding.layoutTotalPriceCart.setVisibility(View.GONE);
+                Toast.makeText(CartActivity.this, "Tạo đơn thành công", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
