@@ -189,7 +189,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(int position, String nameButton, Product product) {
                 switch (nameButton) {
                     case "add":
-                        homeViewModel.addCart(productAdapter.getListProducts().get(position).getId());
+                        homeViewModel.addCart(productAdapter.getListProducts().get(position).getId(), HomeActivity.this);
                         break;
                     case "detail":
                         Dialog dialog = new Dialog(HomeActivity.this);
@@ -237,7 +237,7 @@ public class HomeActivity extends AppCompatActivity {
                         binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                homeViewModel.addCart(productAdapter.getListProducts().get(position).getId());
+                                homeViewModel.addCart(productAdapter.getListProducts().get(position).getId(), HomeActivity.this);
                                 dialog.dismiss();
                                 indexGallery = 0;
                             }

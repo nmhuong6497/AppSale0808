@@ -1,6 +1,7 @@
 package com.example.appsale.presentation.viewmodel;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -13,6 +14,7 @@ import com.example.appsale.data.remote.dto.CartDTO;
 import com.example.appsale.data.remote.dto.ProductDTO;
 import com.example.appsale.data.repository.CartRepository;
 import com.example.appsale.data.repository.ProductRepository;
+import com.example.appsale.presentation.view.activity.HomeActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -126,7 +128,7 @@ public class HomeViewModel extends ViewModel {
         });
     }
 
-    public void addCart(String idProduct) {
+    public void addCart(String idProduct, Context context) {
         cart.setValue(new AppResource.Loading(null));
         Call<AppResource<CartDTO>> callCart = cartRepository.addCart(idProduct);
         callCart.enqueue(new Callback<AppResource<CartDTO>>() {
@@ -147,6 +149,7 @@ public class HomeViewModel extends ViewModel {
                         );
                     }
                     cart.setValue(new AppResource.Success<>(new Cart(cartDTO.getId(), listProduct, cartDTO.getIdUser(), cartDTO.getPrice())));
+                    Toast.makeText(context, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());

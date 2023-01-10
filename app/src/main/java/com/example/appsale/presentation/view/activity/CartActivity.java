@@ -97,8 +97,6 @@ public class CartActivity extends AppCompatActivity {
                 homeViewModel.cartConform(homeViewModel.getCart().getValue().data.getId());
                 cartBinding.layoutTotalPriceCart.setVisibility(View.GONE);
                 finish();
-                Toast.makeText(CartActivity.this, "Đã tạo đơn hàng thành công", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
