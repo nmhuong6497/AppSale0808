@@ -68,8 +68,6 @@ public class CartActivity extends AppCompatActivity {
                         cartBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
                         cartAdapter.updateCart(cartAppResource.data.getProducts());
                         cartBinding.textViewTotalPriceCart.setText(String.format("%s VND", StringUtil.formatCurrency(cartAppResource.data.getPrice())));
-                        cartBinding.layoutTotalPriceCart.setVisibility(View.VISIBLE);
-                        cartBinding.recyclerViewCart.setVisibility(View.VISIBLE);
                         break;
                 }
             }
@@ -79,13 +77,9 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(int position, boolean isQuantityUp) {
                 if (isQuantityUp) {
-                    homeViewModel.updateCart(homeViewModel.getCart().getValue().data.getProducts().get(position).getId(), homeViewModel.getCart().getValue().data.getId(), homeViewModel.getCart().getValue().data.getProducts().get(position).getQuantity() + 1);
-                    cartBinding.recyclerViewCart.setVisibility(View.GONE);
-                    cartBinding.layoutTotalPriceCart.setVisibility(View.GONE);
+                    homeViewModel.updateCart(cartAdapter.getListCarts().get(position).getId(), homeViewModel.getCart().getValue().data.getId(), homeViewModel.getCart().getValue().data.getProducts().get(position).getQuantity() + 1);
                 } else {
-                    homeViewModel.updateCart(homeViewModel.getCart().getValue().data.getProducts().get(position).getId(), homeViewModel.getCart().getValue().data.getId(), homeViewModel.getCart().getValue().data.getProducts().get(position).getQuantity() - 1);
-                    cartBinding.recyclerViewCart.setVisibility(View.GONE);
-                    cartBinding.layoutTotalPriceCart.setVisibility(View.GONE);
+                    homeViewModel.updateCart(cartAdapter.getListCarts().get(position).getId(), homeViewModel.getCart().getValue().data.getId(), homeViewModel.getCart().getValue().data.getProducts().get(position).getQuantity() - 1);
                 }
 
             }

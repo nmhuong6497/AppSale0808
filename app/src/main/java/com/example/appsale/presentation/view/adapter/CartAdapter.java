@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder>{
-    Cart cart;
     List<Product> listProductsOfCart;
     Context context;
     OnItemClickCart onItemClickCart;
@@ -37,6 +36,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         listProductsOfCart.addAll(data);
         notifyDataSetChanged();
     }
+
 
     public List<Product> getListCarts() {
         return listProductsOfCart;

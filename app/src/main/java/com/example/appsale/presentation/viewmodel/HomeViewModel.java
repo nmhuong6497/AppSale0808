@@ -213,7 +213,7 @@ public class HomeViewModel extends ViewModel {
 
     public void updateCart(String idProduct, String idCart, int quantity) {
         cart.setValue(new AppResource.Loading(null));
-        Call<AppResource<CartDTO>> callCart = cartRepository.updateCart(idProduct, idCart,quantity);
+        Call<AppResource<CartDTO>> callCart = cartRepository.updateCart(idProduct, idCart, quantity);
         callCart.enqueue(new Callback<AppResource<CartDTO>>() {
             @Override
             public void onResponse(Call<AppResource<CartDTO>> call, Response<AppResource<CartDTO>> response) {
