@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +9,9 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_weight="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/text_view_list_detail_order_history"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -18,16 +20,19 @@
         android:text="Chi tiết đơn hàng"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_weight="8"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_list_detail_order_history"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layout_total_price_order_history_cart"
         android:id="@+id/recycler_view_detail_order_history"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/layout_detail_order_history" />
 
     <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/layout_totalPrice_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/layout_total_price_order_history_cart"
         android:layout_marginTop="5dp"
         android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
@@ -62,7 +67,7 @@
                 android:gravity="center"
                 android:textAllCaps="true"
                 android:textSize="20sp"
-                android:text="200,000 VND"/>
+                tools:text="200,000 VND"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
@@ -70,4 +75,4 @@
         android:id="@+id/layout_loading"
         layout="@layout/layout_loading"
         android:visibility="gone" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

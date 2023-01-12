@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder>{
+    Cart cart;
     List<Product> listProductsOfCart;
     Context context;
     OnItemClickCart onItemClickCart;
@@ -29,17 +29,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         listProductsOfCart = new ArrayList<>();
     }
 
-    public void updateCart(List<Product> data) {
+    public void updateCart(Cart data) {
         if (listProductsOfCart != null && listProductsOfCart.size() > 0) {
             listProductsOfCart.clear();
         }
-        listProductsOfCart.addAll(data);
+        cart = data;
+        listProductsOfCart.addAll(data.getProducts());
         notifyDataSetChanged();
     }
 
-
-    public List<Product> getListCarts() {
+    public List<Product> getListProductOfCart() {
         return listProductsOfCart;
+    }
+
+    public Cart getCart() {
+        return cart;
     }
 
     @NonNull

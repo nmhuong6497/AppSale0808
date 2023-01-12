@@ -1,32 +1,21 @@
 package com.example.appsale.presentation.view.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.example.appsale.data.model.AppResource;
 import com.example.appsale.data.model.Cart;
-import com.example.appsale.data.model.Product;
-import com.example.appsale.data.repository.CartRepository;
 import com.example.appsale.databinding.ActivityCartBinding;
 import com.example.appsale.presentation.view.adapter.CartAdapter;
-import com.example.appsale.presentation.view.adapter.ProductAdapter;
 import com.example.appsale.presentation.viewmodel.HomeViewModel;
 import com.example.appsale.utils.StringUtil;
-
-import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -66,7 +55,7 @@ public class CartActivity extends AppCompatActivity {
                         break;
                     case SUCCESS:
                         cartBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
-                        cartAdapter.updateCart(cartAppResource.data.getProducts());
+                        cartAdapter.updateCart(cartAppResource.data);
                         cartBinding.textViewTotalPriceCart.setText(String.format("%s VND", StringUtil.formatCurrency(cartAppResource.data.getPrice())));
                         break;
                 }
@@ -77,9 +66,9 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(int position, boolean isQuantityUp) {
                 if (isQuantityUp) {
-                    homeViewModel.updateCart(cartAdapter.getListCarts().get(position).getId(), homeViewModel.getCart().getValue().data.getId(), homeViewModel.getCart().getValue().data.getProducts().get(position).getQuantity() + 1);
+                    homeViewModel.updateCart(cartAdapter.getListProductOfCart().get(position).getId(), cartAdapter.getCart().getId(), cartAdapter.getListProductOfCart().get(position).getQuantity() + 1);
                 } else {
-                    homeViewModel.updateCart(cartAdapter.getListCarts().get(position).getId(), homeViewModel.getCart().getValue().data.getId(), homeViewModel.getCart().getValue().data.getProducts().get(position).getQuantity() - 1);
+                    homeViewModel.updateCart(cartAdapter.getListProductOfCart().get(position).getId(), cartAdapter.getCart().getId(), cartAdapter.getListProductOfCart().get(position).getQuantity() - 1);
                 }
 
             }

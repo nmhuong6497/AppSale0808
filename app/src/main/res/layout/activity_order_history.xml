@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,19 +9,24 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_weight="1"
-        android:gravity="center"
+        android:id="@+id/text_view_list_order_history"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="45dp"
         android:textAllCaps="true"
         android:textSize="22sp"
         android:text="Lịch sử đơn hàng"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/text_view_list_order_history"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/recycler_view_list_oder_history"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="8"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/layout_list_order_history" />
 
@@ -29,4 +34,4 @@
         android:id="@+id/layout_loading"
         layout="@layout/layout_loading"
         android:visibility="gone" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,7 +71,6 @@ public class DetailOrderHistoryActivity extends AppCompatActivity {
                         Collections.reverse(orderHistoryAppResource.data);
                         detailOrderHistoryAdapter.updateListProduct(orderHistoryAppResource.data.get(position).getProducts());
                         detailOrderHistoryBinding.textViewTotalPriceCart.setText(String.format("%s VND", StringUtil.formatCurrency(orderHistoryAppResource.data.get(position).getPrice())));
-                        detailOrderHistoryBinding.layoutTotalPriceCart.setVisibility(View.VISIBLE);
                         break;
                 }
             }
