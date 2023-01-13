@@ -109,11 +109,16 @@
             android:layout_height="match_parent"/>
 
         <TextView
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/background_button_corner_primary"
+            android:id="@+id/button_return"
             android:layout_marginBottom="200dp"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="#FFFFFF"
             android:text="Thêm sản phẩm mới"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

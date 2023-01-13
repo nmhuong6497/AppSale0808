@@ -87,6 +87,13 @@ public class CartActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        cartBinding.buttonReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void initData() {
