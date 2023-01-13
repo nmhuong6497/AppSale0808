@@ -55,6 +55,11 @@ public class CartActivity extends AppCompatActivity {
                         break;
                     case SUCCESS:
                         cartBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        if (cartAppResource.data.getProducts().size() > 0) {
+                            cartBinding.layoutCart.setVisibility(View.VISIBLE);
+                        } else {
+                            cartBinding.layoutNullCart.setVisibility(View.VISIBLE);
+                        }
                         cartAdapter.updateCart(cartAppResource.data);
                         cartBinding.textViewTotalPriceCart.setText(String.format("%s VND", StringUtil.formatCurrency(cartAppResource.data.getPrice())));
                         break;
@@ -70,7 +75,6 @@ public class CartActivity extends AppCompatActivity {
                 } else {
                     homeViewModel.updateCart(cartAdapter.getListProductOfCart().get(position).getId(), cartAdapter.getCart().getId(), cartAdapter.getListProductOfCart().get(position).getQuantity() - 1);
                 }
-
             }
         });
 
