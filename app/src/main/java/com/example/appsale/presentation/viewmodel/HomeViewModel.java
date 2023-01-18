@@ -3,6 +3,7 @@ package com.example.appsale.presentation.viewmodel;
 import android.content.Context;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -14,6 +15,7 @@ import com.example.appsale.data.remote.dto.CartDTO;
 import com.example.appsale.data.remote.dto.ProductDTO;
 import com.example.appsale.data.repository.CartRepository;
 import com.example.appsale.data.repository.ProductRepository;
+import com.example.appsale.presentation.view.activity.CartActivity;
 import com.example.appsale.presentation.view.activity.HomeActivity;
 
 import org.json.JSONException;
@@ -170,7 +172,7 @@ public class HomeViewModel extends ViewModel {
         });
     }
 
-    public void cartConform(String idCart) {
+    public void cartConform(String idCart, Context context) {
         cart.setValue(new AppResource.Loading(null));
         Call<AppResource<CartDTO>> callCart = cartRepository.cartConform(idCart);
         callCart.enqueue(new Callback<AppResource<CartDTO>>() {
@@ -191,6 +193,10 @@ public class HomeViewModel extends ViewModel {
                         );
                     }
                     cart.setValue(new AppResource.Success<>(new Cart(cartDTO.getId(), listProduct, cartDTO.getIdUser(), cartDTO.getPrice())));
+                    Toast.makeText(context, "Tạo đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Out");
+                    builder.show();
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());

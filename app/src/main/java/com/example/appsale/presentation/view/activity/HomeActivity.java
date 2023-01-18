@@ -166,7 +166,6 @@ public class HomeActivity extends AppCompatActivity {
                 switch (cartAppResource.status) {
                     case ERROR:
                         homeBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
-                        Toast.makeText(HomeActivity.this, cartAppResource.message, Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
                         homeBinding.layoutLoading.layoutLoading.setVisibility(View.VISIBLE);
@@ -251,5 +250,35 @@ public class HomeActivity extends AppCompatActivity {
 
     private void observerData() {
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        homeViewModel.fetchCart();
+        homeViewModel.getCart().observe(this, new Observer<AppResource<Cart>>() {
+            @Override
+            public void onChanged(AppResource<Cart> cartAppResource) {
+                switch (cartAppResource.status) {
+                    case ERROR:
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        if (cartAppResource.data == null) {
+                            setupBadge(0);
+                        }
+                        break;
+                    case LOADING:
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.VISIBLE);
+                        break;
+                    case SUCCESS:
+                        homeBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        int countBadge = 0;
+                        for (int i = 0; i < cartAppResource.data.getProducts().size(); i++) {
+                            countBadge += cartAppResource.data.getProducts().get(i).getQuantity();
+                        }
+                        setupBadge(countBadge);
+                        break;
+                }
+            }
+        });
     }
 }

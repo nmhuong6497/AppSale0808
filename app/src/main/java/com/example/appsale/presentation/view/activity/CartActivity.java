@@ -1,11 +1,13 @@
 package com.example.appsale.presentation.view.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -48,7 +50,8 @@ public class CartActivity extends AppCompatActivity {
                 switch (cartAppResource.status) {
                     case ERROR:
                         cartBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
-                        Toast.makeText(CartActivity.this, cartAppResource.message, Toast.LENGTH_SHORT).show();
+                        cartBinding.layoutNullCart.setVisibility(View.VISIBLE);
+                        cartBinding.layoutCart.setVisibility(View.GONE);
                         break;
                     case LOADING:
                         cartBinding.layoutLoading.layoutLoading.setVisibility(View.VISIBLE);
@@ -56,11 +59,16 @@ public class CartActivity extends AppCompatActivity {
                     case SUCCESS:
                         cartBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
                         if (cartAppResource.data.getProducts().size() > 0) {
+                            cartBinding.layoutNullCart.setVisibility(View.GONE);
                             cartBinding.layoutCart.setVisibility(View.VISIBLE);
                         } else {
                             cartBinding.layoutNullCart.setVisibility(View.VISIBLE);
+                            cartBinding.layoutCart.setVisibility(View.GONE);
                         }
                         cartAdapter.updateCart(cartAppResource.data);
+                        if (cartAppResource.data == null) {
+                            startActivity(new Intent(CartActivity.this, HomeActivity.class));
+                        }
                         cartBinding.textViewTotalPriceCart.setText(String.format("%s VND", StringUtil.formatCurrency(cartAppResource.data.getPrice())));
                         break;
                 }
@@ -81,10 +89,7 @@ public class CartActivity extends AppCompatActivity {
         cartBinding.buttonCreateOrderCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                homeViewModel.cartConform(homeViewModel.getCart().getValue().data.getId());
-                cartBinding.layoutTotalPriceCart.setVisibility(View.GONE);
-                Toast.makeText(CartActivity.this, "Tạo đơn thành công", Toast.LENGTH_SHORT).show();
-                finish();
+                homeViewModel.cartConform(cartAdapter.getCart().getId(), CartActivity.this);
             }
         });
 
