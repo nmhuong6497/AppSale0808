@@ -179,24 +179,6 @@ public class HomeViewModel extends ViewModel {
             @Override
             public void onResponse(Call<AppResource<CartDTO>> call, Response<AppResource<CartDTO>> response) {
                 if (response.isSuccessful()) {
-                    CartDTO cartDTO = response.body().data;
-                    List<Product> listProduct = new ArrayList<>();
-                    for (ProductDTO productDTO : cartDTO.getProducts()) {
-                        listProduct.add(new Product(
-                                productDTO.getId(),
-                                productDTO.getName(),
-                                productDTO.getAddress(),
-                                productDTO.getPrice(),
-                                productDTO.getImg(),
-                                productDTO.getQuantity(),
-                                productDTO.getGallery())
-                        );
-                    }
-                    cart.setValue(new AppResource.Success<>(new Cart(cartDTO.getId(), listProduct, cartDTO.getIdUser(), cartDTO.getPrice())));
-                    Toast.makeText(context, "Tạo đơn hàng thành công", Toast.LENGTH_SHORT).show();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle("Out");
-                    builder.show();
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
@@ -209,7 +191,6 @@ public class HomeViewModel extends ViewModel {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<AppResource<CartDTO>> call, Throwable t) {
                 cart.setValue(new AppResource.Error<>(t.getMessage()));

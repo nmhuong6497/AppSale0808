@@ -71,6 +71,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             super(view.getRoot());
             binding = view;
 
+            binding.cardViewItemCart.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (onItemClickCart != null) {
+                        onItemClickCart.onLongClick(getAdapterPosition());
+                    }
+                    return false;
+                }
+            });
             binding.imageViewUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -108,5 +117,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     public interface OnItemClickCart {
         void onClick(int position, boolean isQuantityUp);
+        void onLongClick(int position);
     }
 }

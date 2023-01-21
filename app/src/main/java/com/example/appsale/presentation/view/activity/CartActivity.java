@@ -7,13 +7,16 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.appsale.data.model.AppResource;
 import com.example.appsale.data.model.Cart;
+import com.example.appsale.data.repository.CartRepository;
 import com.example.appsale.databinding.ActivityCartBinding;
 import com.example.appsale.presentation.view.adapter.CartAdapter;
 import com.example.appsale.presentation.viewmodel.HomeViewModel;
@@ -49,6 +52,7 @@ public class CartActivity extends AppCompatActivity {
             public void onChanged(AppResource<Cart> cartAppResource) {
                 switch (cartAppResource.status) {
                     case ERROR:
+                        Toast.makeText(CartActivity.this, cartAppResource.message, Toast.LENGTH_SHORT).show();
                         cartBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
                         cartBinding.layoutNullCart.setVisibility(View.VISIBLE);
                         cartBinding.layoutCart.setVisibility(View.GONE);
@@ -83,6 +87,25 @@ public class CartActivity extends AppCompatActivity {
                 } else {
                     homeViewModel.updateCart(cartAdapter.getListProductOfCart().get(position).getId(), cartAdapter.getCart().getId(), cartAdapter.getListProductOfCart().get(position).getQuantity() - 1);
                 }
+            }
+
+            @Override
+            public void onLongClick(int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
+                builder.setMessage("Xóa món \"" + cartAdapter.getListProductOfCart().get(position).getName() + "\" ?");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        homeViewModel.updateCart(cartAdapter.getListProductOfCart().get(position).getId(), cartAdapter.getCart().getId(), 0);
+                    }
+                });
+
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                builder.show();
             }
         });
 

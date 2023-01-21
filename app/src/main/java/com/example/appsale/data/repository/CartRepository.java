@@ -41,6 +41,6 @@ public class CartRepository {
     public  Call<AppResource<CartDTO>> cartConform(String idCart) {
         HashMap<String, Object> map = new HashMap<>();
         map.put("id_cart", idCart);
-        return  apiService.cartConform(map);
+        return apiService.cartConform(map);
     }
 }

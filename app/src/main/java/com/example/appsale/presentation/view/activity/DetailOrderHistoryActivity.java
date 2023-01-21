@@ -61,6 +61,7 @@ public class DetailOrderHistoryActivity extends AppCompatActivity {
                 switch (orderHistoryAppResource.status) {
                     case ERROR:
                         detailOrderHistoryBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        detailOrderHistoryBinding.layoutTotalPriceOrderHistoryCart.setVisibility(View.GONE);
                         Toast.makeText(DetailOrderHistoryActivity.this, orderHistoryAppResource.message, Toast.LENGTH_SHORT).show();
                         break;
                     case LOADING:
@@ -68,6 +69,7 @@ public class DetailOrderHistoryActivity extends AppCompatActivity {
                         break;
                     case SUCCESS:
                         detailOrderHistoryBinding.layoutLoading.layoutLoading.setVisibility(View.GONE);
+                        detailOrderHistoryBinding.layoutTotalPriceOrderHistoryCart.setVisibility(View.VISIBLE);
                         Collections.reverse(orderHistoryAppResource.data);
                         detailOrderHistoryAdapter.updateListProduct(orderHistoryAppResource.data.get(position).getProducts());
                         detailOrderHistoryBinding.textViewTotalPriceCart.setText(String.format("%s VND", StringUtil.formatCurrency(orderHistoryAppResource.data.get(position).getPrice())));

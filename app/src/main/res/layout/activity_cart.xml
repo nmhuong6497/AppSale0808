@@ -19,7 +19,6 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:textAllCaps="true"
             android:textSize="22sp"
             android:text="Danh sách giỏ hàng"/>
 
