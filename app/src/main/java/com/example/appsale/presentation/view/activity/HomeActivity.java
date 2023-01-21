@@ -120,7 +120,7 @@ public class HomeActivity extends AppCompatActivity {
         builder.setIcon(R.drawable.icon_log_out);
         builder.setCancelable(false);
 
-        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 AppCache appCache = AppCache.getInstance(HomeActivity.this);
@@ -130,7 +130,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("KHÔNG", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 

@@ -11,6 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_view_item_cart"
+        android:background="@drawable/background_item_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

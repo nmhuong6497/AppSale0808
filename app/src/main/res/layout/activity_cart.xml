@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:textSize="22sp"
+            android:textAllCaps="true"
             android:text="Danh sách giỏ hàng"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -93,14 +93,14 @@ public class CartActivity extends AppCompatActivity {
             public void onLongClick(int position) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
                 builder.setMessage("Xóa món \"" + cartAdapter.getListProductOfCart().get(position).getName() + "\" ?");
-                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("CÓ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         homeViewModel.updateCart(cartAdapter.getListProductOfCart().get(position).getId(), cartAdapter.getCart().getId(), 0);
                     }
                 });
 
-                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("KHÔNG", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }
