@@ -4,30 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.activity.OrderHistoryActivity"
-    android:paddingVertical="5dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".presentation.view.activity.OrderHistoryActivity">
 
     <TextView
         android:id="@+id/text_view_list_order_history"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Lịch sử đơn hàng"
         android:textAllCaps="true"
         android:textSize="22sp"
-        android:text="Lịch sử đơn hàng"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toBottomOf="@+id/text_view_list_order_history"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/recycler_view_list_oder_history"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_list_order_history"
         tools:listitem="@layout/layout_list_order_history" />
 
     <include

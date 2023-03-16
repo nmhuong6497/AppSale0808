@@ -6,27 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".presentation.view.activity.HomeActivity">
 
-    <androidx.appcompat.widget.Toolbar
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:background="@color/white"
-        android:titleTextColor="@color/primary"
-        app:contentInsetEnd="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="FOODHUB"
+        app:titleTextColor="#FF5019" />
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/recycler_view_product"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@id/toolbar_home"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_home"
         tools:listitem="@layout/layout_item_product" />
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/recycler_view_product"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        android:id="@+id/bottom_navigation"-->
+    <!--        app:menu="@menu/menu_bottom_navigation"-->
+    <!--        android:background="#F4F4F4"-->
+    <!--        app:itemIconTint="@color/primary"-->
+    <!--        app:itemTextColor="@color/primary"-->
+    <!--        app:itemIconSize="28dp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="52dp"/>-->
 
     <include
         android:id="@+id/layout_loading"

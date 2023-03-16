@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.view.activity.RegisterActivity">
+
     <ImageView
         android:id="@+id/image_view_sign_up"
         android:layout_width="400dp"
@@ -13,7 +14,7 @@
         app:layout_constraintDimensionRatio="4:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -23,7 +24,6 @@
         app:constraint_referenced_ids="image_view_sign_up" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:textColorHint="@color/primary"
         android:id="@+id/textLayoutName"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
@@ -31,12 +31,13 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
         android:hint="Name"
-        app:placeholderText="Example : Mr John"
+        android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:placeholderText="Example : Mr John"
         app:startIconDrawable="@drawable/ic_user"
         app:startIconTint="@null">
 
@@ -49,20 +50,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:textColorHint="@color/primary"
         android:id="@+id/textLayoutLocation"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
-        app:placeholderText="Example : District 1"
         android:hint="Location"
+        android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textLayoutName"
+        app:placeholderText="Example : District 1"
         app:startIconDrawable="@drawable/ic_location"
         app:startIconTint="@null">
 
@@ -75,7 +76,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:textColorHint="@color/primary"
         android:id="@+id/textLayoutEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
@@ -83,12 +83,13 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
         android:hint="Email"
-        app:placeholderText="Example : abc@gmail.com"
+        android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textLayoutLocation"
+        app:placeholderText="Example : abc@gmail.com"
         app:startIconDrawable="@drawable/ic_location"
         app:startIconTint="@null">
 
@@ -99,8 +100,8 @@
             android:imeOptions="actionNext"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
-        android:textColorHint="@color/primary"
         android:id="@+id/textLayoutPhone"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
@@ -108,12 +109,13 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
         android:hint="Phone"
-        app:placeholderText="Example : (+84) 123 456 789"
+        android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textLayoutEmail"
+        app:placeholderText="Example : (+84) 123 456 789"
         app:startIconDrawable="@drawable/ic_phone"
         app:startIconTint="@null">
 
@@ -124,8 +126,8 @@
             android:imeOptions="actionNext"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
-        android:textColorHint="@color/primary"
         android:id="@+id/textLayoutPassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
@@ -133,6 +135,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
         android:hint="Password"
+        android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,17 +155,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
-        android:background="@drawable/background_button_corner_primary"
         android:id="@+id/register_button"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="@drawable/background_button_corner_primary"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="6:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textLayoutPassword"
-        app:layout_constraintVertical_bias="0.6"
-        android:gravity="center">
+        app:layout_constraintVertical_bias="0.6">
 
         <TextView
             android:id="@+id/register_text"

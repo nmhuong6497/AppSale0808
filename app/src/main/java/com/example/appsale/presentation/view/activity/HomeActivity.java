@@ -9,11 +9,9 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,13 +28,12 @@ import com.example.appsale.data.local.AppCache;
 import com.example.appsale.data.model.AppResource;
 import com.example.appsale.data.model.Cart;
 import com.example.appsale.data.model.Product;
-import com.example.appsale.data.model.User;
-import com.example.appsale.data.remote.dto.CartDTO;
 import com.example.appsale.databinding.ActivityHomeBinding;
 import com.example.appsale.databinding.LayoutDialogHomeBinding;
 import com.example.appsale.presentation.view.adapter.ProductAdapter;
 import com.example.appsale.presentation.viewmodel.HomeViewModel;
 import com.example.appsale.utils.StringUtil;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.List;
 
@@ -75,6 +72,24 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(homeBinding.toolbarHome);
         homeViewModel.fetchProducts();
         homeViewModel.fetchCart();
+
+//        homeBinding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.item_cart:
+//                        startActivity(new Intent(HomeActivity.this, CartActivity.class));
+//                        break;
+//                    case R.id.item_history:
+//                        startActivity(new Intent(HomeActivity.this, OrderHistoryActivity.class));
+//                        break;
+//                    case R.id.item_home:
+//                        startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
     }
 
     @Override
@@ -184,6 +199,7 @@ public class HomeActivity extends AppCompatActivity {
 
         productAdapter.setOnItemClickFood(new ProductAdapter.OnItemClickProduct() {
             int indexGallery = 0;
+
             @Override
             public void onClick(int position, String nameButton, Product product) {
                 switch (nameButton) {

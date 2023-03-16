@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="10dp"
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="3dp"
-    app:cardElevation="5dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,82 +15,82 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_image"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="155dp"
+            android:layout_height="0dp"
             android:elevation="5dp"
-            app:layout_constraintDimensionRatio="1.5:1"
-            android:layout_width="0dp"
-            android:layout_height="100dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1.4:1"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:scaleType="fitXY"
                 android:id="@+id/image_view"
-                tools:src="@drawable/ic_logo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/ic_logo" />
         </androidx.cardview.widget.CardView>
 
         <TextView
-            app:layout_constraintVertical_chainStyle="spread_inside"
-            android:layout_marginLeft="15dp"
-            android:textColor="#f20"
             android:id="@+id/text_view_name_product"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Bánh xèo"
+            android:textColor="#f20"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/text_view_price_product"
             app:layout_constraintLeft_toRightOf="@id/card_view_image"
-            android:ellipsize="end"
-            android:text="Bánh xèo"
-            android:maxLines="1"
-            android:textSize="16sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <TextView
-            android:textColor="#8A8A8A"
             android:id="@+id/text_view_price_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#8A8A8A"
+            android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@id/text_view_name_product"
             app:layout_constraintTop_toBottomOf="@id/text_view_name_product"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="13sp"
-            android:layout_width="0dp"
-            tools:text="10,000 VND"
-            android:layout_height="wrap_content"/>
+            tools:text="10,000 VND" />
 
         <TextView
-            app:layout_constraintTop_toBottomOf="@+id/text_view_price_product"
-            app:layout_constraintStart_toStartOf="@+id/text_view_price_product"
-            android:textColor="#8A8A8A"
-            tools:text="x1"
             android:id="@+id/text_view_quantity"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#8A8A8A"
+            app:layout_constraintStart_toStartOf="@+id/text_view_price_product"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_price_product"
+            tools:text="x1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/button_price_cart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/card_view_image">
 
             <TextView
-                android:layout_marginEnd="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/text_view_total_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/background_button_corner_primary"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="3dp"
                 android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 tools:text="10,000 VND" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

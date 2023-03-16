@@ -1,107 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="10dp"
-    android:layout_marginHorizontal="5dp"
-    app:cardElevation="5dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginHorizontal="3dp"
+    app:cardElevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <TextView
-            app:layout_constraintVertical_chainStyle="spread_inside"
-            android:textColor="#f20"
             android:id="@+id/text_view_name_dialog"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="16sp"
-            android:text="Quán bún bò"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Quán bún bò"
+            android:textColor="#f20"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <TextView
-            android:textColor="#8A8A8A"
             android:id="@+id/text_view_address_dialog"
-            app:layout_constraintTop_toBottomOf="@id/text_view_name_dialog"
-            app:layout_constraintStart_toStartOf="@+id/text_view_name_dialog"
-            app:layout_constraintEnd_toEndOf="@+id/text_view_name_dialog"
-            android:textSize="13sp"
-            android:text="225 đường số 15"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="225 đường số 15"
+            android:textColor="#8A8A8A"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="@+id/text_view_name_dialog"
+            app:layout_constraintStart_toStartOf="@+id/text_view_name_dialog"
+            app:layout_constraintTop_toBottomOf="@id/text_view_name_dialog" />
 
         <LinearLayout
             android:id="@+id/button_price_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/text_view_address_dialog"
-            app:layout_constraintStart_toStartOf="@+id/text_view_address_dialog">
+            app:layout_constraintStart_toStartOf="@+id/text_view_address_dialog"
+            app:layout_constraintTop_toBottomOf="@id/text_view_address_dialog">
 
             <TextView
                 android:id="@+id/text_view_price_dialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="10,000 VND"/>
+                tools:text="10,000 VND" />
         </LinearLayout>
 
         <ImageView
-            android:src="@drawable/ic_logo"
             android:id="@+id/image_view_dialog"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/button_price_cart"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
             android:layout_width="0dp"
-            android:layout_height="220dp"/>
+            android:layout_height="220dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_price_cart" />
 
         <ImageView
-            android:src="@drawable/icon_back"
             android:id="@+id/button_back_dialog"
-            app:layout_constraintTop_toTopOf="@+id/image_view_dialog"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_back"
             app:layout_constraintBottom_toBottomOf="@id/image_view_dialog"
             app:layout_constraintStart_toStartOf="@id/text_view_name_dialog"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            app:layout_constraintTop_toTopOf="@+id/image_view_dialog" />
 
         <ImageView
-            android:src="@drawable/icon_front"
             android:id="@+id/button_front_dialog"
-            app:layout_constraintTop_toTopOf="@+id/image_view_dialog"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_front"
             app:layout_constraintBottom_toBottomOf="@id/image_view_dialog"
             app:layout_constraintEnd_toEndOf="@id/text_view_name_dialog"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            app:layout_constraintTop_toTopOf="@+id/image_view_dialog" />
 
         <LinearLayout
+            android:id="@+id/button_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:background="@drawable/background_button_corner_primary"
+            android:gravity="center"
+            android:paddingHorizontal="22dp"
+            android:paddingVertical="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_dialog"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/background_button_corner_primary"
-            android:id="@+id/button_add"
-            android:paddingVertical="10dp"
-            android:paddingHorizontal="20dp"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            app:layout_constraintTop_toBottomOf="@+id/image_view_dialog">
+
             <TextView
-                android:textSize="18sp"
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thêm vào giỏ hàng"/>
+                android:text="Thêm"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </LinearLayout>
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

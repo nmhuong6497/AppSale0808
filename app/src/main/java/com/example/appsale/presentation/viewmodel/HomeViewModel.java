@@ -57,7 +57,7 @@ public class HomeViewModel extends ViewModel {
                 if (response.isSuccessful()) {
                     List<ProductDTO> listProductDTOs = response.body().data;
                     List<Product> listProduct = new ArrayList<>();
-                    for (ProductDTO productDTO: listProductDTOs) {
+                    for (ProductDTO productDTO : listProductDTOs) {
                         listProduct.add(new Product(
                                 productDTO.getId(),
                                 productDTO.getName(),
@@ -191,6 +191,7 @@ public class HomeViewModel extends ViewModel {
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<AppResource<CartDTO>> call, Throwable t) {
                 cart.setValue(new AppResource.Error<>(t.getMessage()));

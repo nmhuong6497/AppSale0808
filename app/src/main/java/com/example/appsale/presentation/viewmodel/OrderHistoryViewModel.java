@@ -58,7 +58,7 @@ public class OrderHistoryViewModel extends ViewModel {
                 if (response.isSuccessful()) {
                     List<OrderHistoryDTO> orderHistoryDTOS = response.body().data;
                     List<OrderHistory> orderHistoryList = new ArrayList<>();
-                    for (OrderHistoryDTO orderHistoryDTO: orderHistoryDTOS) {
+                    for (OrderHistoryDTO orderHistoryDTO : orderHistoryDTOS) {
                         orderHistoryList.add(new OrderHistory(
                                 orderHistoryDTO.getId(),
                                 orderHistoryDTO.getProducts(),

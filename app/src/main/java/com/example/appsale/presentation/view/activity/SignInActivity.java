@@ -29,6 +29,7 @@ public class SignInActivity extends AppCompatActivity {
     EditText edtEmail, edtPassword;
     LinearLayout linearSignIn, loadingView, linearDefaultUser;
     TextView tvRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -4,71 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.activity.CartActivity"
-    android:paddingVertical="5dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".presentation.view.activity.CartActivity">
 
     <TextView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/text_view_list_detail_order_history"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Chi tiết đơn hàng"
         android:textAllCaps="true"
         android:textSize="22sp"
-        android:text="Chi tiết đơn hàng"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toBottomOf="@+id/text_view_list_detail_order_history"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/layout_total_price_order_history_cart"
         android:id="@+id/recycler_view_detail_order_history"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/layout_total_price_order_history_cart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_list_detail_order_history"
         tools:listitem="@layout/layout_detail_order_history" />
 
     <LinearLayout
+        android:id="@+id/layout_total_price_order_history_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/layout_total_price_order_history_cart"
-        android:layout_marginTop="5dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
             <TextView
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="3dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/text_view_total_price_cart"
-                app:layout_constraintBottom_toBottomOf="@+id/text_view_total_price_cart"
-                android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:text="Tổng đơn hàng"
                 android:textAllCaps="true"
-                android:text="Tổng đơn hàng"/>
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_total_price_cart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_view_total_price_cart" />
 
             <TextView
-                android:paddingHorizontal="10dp"
-                android:background="@drawable/background_create_oder"
-                android:textColor="#FFFFFF"
                 android:id="@+id/text_view_total_price_cart"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:background="@drawable/background_create_oder"
                 android:gravity="center"
+                android:paddingHorizontal="10dp"
                 android:textAllCaps="true"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                tools:text="200,000 VND"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="200,000 VND" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

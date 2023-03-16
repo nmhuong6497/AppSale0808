@@ -93,7 +93,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Glide.with(context)
                     .load(AppConstant.BASE_URL + product.getImg())
                     .placeholder(R.drawable.ic_logo)
-                    .into(binding.imageView);
+                    .into(binding.imageViewProduct);
         }
     }
 

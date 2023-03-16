@@ -65,7 +65,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
                 }
             }
         });
-        
+
         orderHistoryAdapter.setOnItemClickDetail(new OrderHistoryAdapter.OnItemClickProduct() {
             @Override
             public void onClick(int position) {
