@@ -51,8 +51,8 @@ public class SignInActivity extends AppCompatActivity {
     private void initData() {
         loadingView = findViewById(R.id.layout_loading);
         linearSignIn = findViewById(R.id.sign_in);
-        edtEmail = findViewById(R.id.textEditEmail);
-        edtPassword = findViewById(R.id.textEditPassword);
+        edtEmail = findViewById(R.id.text_edit_email);
+        edtPassword = findViewById(R.id.text_edit_password);
         tvRegister = findViewById(R.id.text_view_register);
         linearDefaultUser = findViewById(R.id.layout_default_user);
     }
@@ -104,8 +104,8 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append("Don't have an account?");
-        spannableStringBuilder.append(SpannedUtil.setClickColorLink("Register", this, new SpannedUtil.OnListenClick() {
+        spannableStringBuilder.append("Bạn chưa có tài khoản?");
+        spannableStringBuilder.append(SpannedUtil.setClickColorLink(" Tạo ngay", this, new SpannedUtil.OnListenClick() {
             @Override
             public void onClick() {
                 startActivity(new Intent(SignInActivity.this, RegisterActivity.class));

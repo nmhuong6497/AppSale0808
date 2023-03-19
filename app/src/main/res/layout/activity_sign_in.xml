@@ -7,7 +7,7 @@
     tools:context=".presentation.view.activity.SignInActivity">
 
     <ImageView
-        android:id="@+id/imageViewBannerSignIn"
+        android:id="@+id/image_view_banner_sign_in"
         android:layout_width="400dp"
         android:layout_height="0dp"
         android:src="@drawable/ic_text_logo"
@@ -21,10 +21,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="imageViewBannerSignIn" />
+        app:constraint_referenced_ids="image_view_banner_sign_in" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textLayoutEmail"
+        android:id="@+id/text_layout_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         app:startIconTint="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textEditEmail"
+            android:id="@+id/text_edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
@@ -49,25 +49,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textLayoutPassword"
+        android:id="@+id/text_layout_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
-        android:hint="Password"
+        android:hint="Mật khẩu"
         android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLayoutEmail"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_email"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_password"
         app:startIconTint="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textEditPassword"
+            android:id="@+id/text_edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
@@ -83,7 +83,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLayoutPassword">
+        app:layout_constraintTop_toBottomOf="@+id/text_layout_password">
 
         <ImageView
             android:layout_width="20dp"
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Click to get default User" />
+            android:text="Tài khoản mặc định" />
 
     </LinearLayout>
 
@@ -108,14 +108,14 @@
         app:layout_constraintDimensionRatio="6:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLayoutPassword"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_password"
         app:layout_constraintVertical_bias="0.75">
 
         <TextView
             android:id="@+id/sign_in_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign In"
+            android:text="Đăng nhập"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -130,7 +130,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sign_in"
         app:layout_constraintVertical_bias="0.85"
-        tools:text="Don't have an account?Register" />
+        tools:text="Bạn chưa có tài khoản? Tạo ngay" />
 
     <include
         android:id="@+id/layout_loading"

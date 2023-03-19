@@ -24,25 +24,25 @@
         app:constraint_referenced_ids="image_view_sign_up" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textLayoutName"
+        android:id="@+id/text_layout_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
-        android:hint="Name"
+        android:hint="Tên"
         android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier"
-        app:placeholderText="Example : Mr John"
+        app:placeholderText="Ví dụ: Huy"
         app:startIconDrawable="@drawable/ic_user"
         app:startIconTint="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textEditName"
+            android:id="@+id/text_edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
@@ -50,20 +50,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textLayoutLocation"
+        android:id="@+id/text_layout_location"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
-        android:hint="Location"
+        android:hint="Địa chỉ"
         android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLayoutName"
-        app:placeholderText="Example : District 1"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_name"
+        app:placeholderText="Ví dụ: Quận 1, TPHCM"
         app:startIconDrawable="@drawable/ic_location"
         app:startIconTint="@null">
 
@@ -76,7 +76,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textLayoutEmail"
+        android:id="@+id/text_layout_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,13 +88,13 @@
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLayoutLocation"
-        app:placeholderText="Example : abc@gmail.com"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_location"
+        app:placeholderText="Ví dụ: abc@gmail.com"
         app:startIconDrawable="@drawable/ic_location"
         app:startIconTint="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textEditEmail"
+            android:id="@+id/text_edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
@@ -102,25 +102,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textLayoutPhone"
+        android:id="@+id/text_layout_phone"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
-        android:hint="Phone"
+        android:hint="Số điện thoại"
         android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLayoutEmail"
-        app:placeholderText="Example : (+84) 123 456 789"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_email"
+        app:placeholderText="Ví dụ: 0 123 456 789"
         app:startIconDrawable="@drawable/ic_phone"
         app:startIconTint="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textEditPhone"
+            android:id="@+id/text_edit_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
@@ -128,25 +128,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textLayoutPassword"
+        android:id="@+id/text_layout_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="15dp"
-        android:hint="Password"
+        android:hint="Mật khẩu"
         android:textColorHint="@color/primary"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLayoutPhone"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_phone"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_password"
         app:startIconTint="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textEditPassword"
+            android:id="@+id/text_edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
@@ -164,14 +164,14 @@
         app:layout_constraintDimensionRatio="6:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textLayoutPassword"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_password"
         app:layout_constraintVertical_bias="0.6">
 
         <TextView
             android:id="@+id/register_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:text="Đăng ký"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -186,7 +186,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/register_button"
         app:layout_constraintVertical_bias="0.824"
-        tools:text="Already have an account? Login" />
+        tools:text="Bạn đã có tài khoản? Đăng nhập" />
 
     <include
         android:id="@+id/layout_loading"

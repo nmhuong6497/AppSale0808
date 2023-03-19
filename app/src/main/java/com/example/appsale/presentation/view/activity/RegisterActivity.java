@@ -85,8 +85,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        spannableStringBuilder.append("Already have an account?");
-        spannableStringBuilder.append(SpannedUtil.setClickColorLink("Login", this, new SpannedUtil.OnListenClick() {
+        spannableStringBuilder.append("Bạn đã có tài khoản?");
+        spannableStringBuilder.append(SpannedUtil.setClickColorLink(" Đăng nhập", this, new SpannedUtil.OnListenClick() {
             @Override
             public void onClick() {
                 finish();
