@@ -12,6 +12,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,7 +37,9 @@ import com.example.appsale.presentation.viewmodel.HomeViewModel;
 import com.example.appsale.utils.StringUtil;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -72,24 +76,6 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(homeBinding.toolbarHome);
         homeViewModel.fetchProducts();
         homeViewModel.fetchCart();
-
-//        homeBinding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.item_cart:
-//                        startActivity(new Intent(HomeActivity.this, CartActivity.class));
-//                        break;
-//                    case R.id.item_history:
-//                        startActivity(new Intent(HomeActivity.this, OrderHistoryActivity.class));
-//                        break;
-//                    case R.id.item_home:
-//                        startActivity(new Intent(HomeActivity.this, HomeActivity.class));
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
     }
 
     @Override
@@ -260,6 +246,32 @@ public class HomeActivity extends AppCompatActivity {
                         dialog.show();
                         break;
                 }
+            }
+        });
+
+        // Search
+        homeBinding.editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                productAdapter.updateListProduct(homeViewModel.getListProducts().getValue().data);
+                String strSearch = editable.toString();
+                List<Product> productListSearch = new ArrayList<>();
+                for (int i = 0; i < productAdapter.getListProducts().size(); i++) {
+                    if (productAdapter.getListProducts().get(i).getName().toLowerCase(Locale.ROOT).contains(strSearch)) {
+                        productListSearch.add(productAdapter.getListProducts().get(i));
+                    }
+                }
+                productAdapter.setListProducts(productListSearch);
             }
         });
     }
