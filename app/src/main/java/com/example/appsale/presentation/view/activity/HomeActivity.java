@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -47,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     ProductAdapter productAdapter;
     HomeViewModel homeViewModel;
     TextView tvCountCart;
+    boolean isExit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -278,6 +280,23 @@ public class HomeActivity extends AppCompatActivity {
 
     private void observerData() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isExit) {
+            super.onBackPressed();
+        } else {
+            isExit = true;
+            Toast.makeText(this, "Chạm lần nữa để thoát", Toast.LENGTH_SHORT).show();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    isExit = false;
+                }
+            }, 2000);
+        }
     }
 
     @Override
