@@ -265,7 +265,9 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                productAdapter.updateListProduct(homeViewModel.getListProducts().getValue().data);
+                if (homeViewModel.getListProducts().getValue().data != null) {
+                    productAdapter.updateListProduct(homeViewModel.getListProducts().getValue().data);
+                }
                 String strSearch = editable.toString();
                 List<Product> productListSearch = new ArrayList<>();
                 for (int i = 0; i < productAdapter.getListProducts().size(); i++) {
